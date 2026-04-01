@@ -1,61 +1,65 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
  
-// ─── Font ────────────────────────────────────────────────────────────────────
-// Cambia Inter por la fuente del proyecto.
-// Asegúrate de que el nombre coincida con el definido en tailwind.config.js
-const inter = Inter({
+// ─── Fuentes ─────────────────────────────────────────────────────────────────
+ 
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["300", "400", "500"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+ 
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
  
 // ─── Metadata ────────────────────────────────────────────────────────────────
-// Actualiza estos valores al iniciar cada proyecto nuevo.
-// NEXT_PUBLIC_SITE_URL debe estar definido en .env.local
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tudominio.com";
+ 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://epicus.com.mx";
  
 export const metadata: Metadata = {
-  // Title: las páginas hijas usan el template automáticamente.
-  // Ejemplo: la página "Nosotros" aparece como "Nosotros | Nombre del Proyecto"
   title: {
-    default: "Nombre del Proyecto",
-    template: "%s | Nombre del Proyecto",
+    default: "EPICUS — Asesoría Inmobiliaria en Monterrey",
+    template: "%s | EPICUS",
   },
-  description: "Descripción del proyecto. Máximo 160 caracteres para SEO.",
+  description:
+    "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana. Acceso a 95 proyectos activos y 4,480 unidades disponibles.",
   metadataBase: new URL(siteUrl),
  
-  // Open Graph — redes sociales (Facebook, LinkedIn, WhatsApp)
   openGraph: {
-    title: "Nombre del Proyecto",
-    description: "Descripción del proyecto.",
+    title: "EPICUS — Asesoría Inmobiliaria en Monterrey",
+    description:
+      "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana.",
     url: siteUrl,
-    siteName: "Nombre del Proyecto",
+    siteName: "EPICUS",
     locale: "es_MX",
     type: "website",
     images: [
       {
-        url: "/og-image.png", // 1200x630px — agregar a /public
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Nombre del Proyecto",
+        alt: "EPICUS — Asesoría Inmobiliaria",
       },
     ],
   },
  
-  // Twitter / X
   twitter: {
     card: "summary_large_image",
-    title: "Nombre del Proyecto",
-    description: "Descripción del proyecto.",
+    title: "EPICUS — Asesoría Inmobiliaria en Monterrey",
+    description:
+      "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana.",
     images: ["/og-image.png"],
-    // creator: "@tuhandle", // descomentar si aplica
   },
  
-  // Robots — índexable por defecto, se puede sobreescribir por página
   robots: {
     index: true,
     follow: true,
@@ -65,7 +69,6 @@ export const metadata: Metadata = {
     },
   },
  
-  // Favicon e íconos — agregar archivos a /public/icons
   icons: {
     icon: "/icons/favicon.ico",
     shortcut: "/icons/favicon-32x32.png",
@@ -74,14 +77,15 @@ export const metadata: Metadata = {
 };
  
 // ─── Layout ──────────────────────────────────────────────────────────────────
+ 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="font-sans antialiased bg-white text-primary">
+    <html lang="es" className={`${dmSans.variable} ${cormorant.variable}`}>
+      <body className="font-sans antialiased bg-white text-ink">
         <Navbar />
         <main>{children}</main>
         <Footer />
