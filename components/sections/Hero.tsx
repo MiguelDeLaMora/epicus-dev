@@ -32,7 +32,7 @@ export default function Hero() {
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-68px)]">
 
       {/* ── Lado izquierdo — contenido ── */}
-      <div className="flex flex-col justify-center px-8 py-24 lg:px-20 lg:py-28">
+      <div className="flex flex-col justify-center px-section py-24 lg:py-28">
 
         <Eyebrow>Asesoría Inmobiliaria · Monterrey</Eyebrow>
 

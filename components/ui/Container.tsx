@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
- 
+
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
   as?: React.ElementType;
 }
- 
+
 /**
- * Contenedor centrado con ancho máximo y padding horizontal.
+ * Contenedor centrado con ancho máximo y padding horizontal del 4%.
  * Úsalo dentro de Section para limitar el ancho del contenido.
  *
  * @example
@@ -20,7 +20,7 @@ export default function Container({
   as: Tag = "div",
 }: ContainerProps) {
   return (
-    <Tag className={cn("mx-auto w-full max-w-6xl px-6", className)}>
+    <Tag className={cn("mx-auto w-full max-w-6xl px-section", className)}>
       {children}
     </Tag>
   );
