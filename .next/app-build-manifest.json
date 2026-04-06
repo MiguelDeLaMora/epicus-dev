@@ -11,20 +11,30 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/studio/[[...tool]]/page": [
+    "/desarrolladores/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/studio/[[...tool]]/page.js"
+      "static/chunks/app/desarrolladores/page.js"
+    ],
+    "/nosotros/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/nosotros/page.js"
+    ],
+    "/portafolio/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/portafolio/page.js"
     ],
     "/recursos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/recursos/page.js"
     ],
-    "/_not-found/page": [
+    "/contacto/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/contacto/page.js"
     ]
   }
 }
