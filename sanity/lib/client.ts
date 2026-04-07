@@ -1,5 +1,6 @@
 import { createClient } from 'next-sanity'
 import { recursosQuery, imagenQuery, heroQuery } from './queries'
+import { recursoBySlugQuery } from './queries'
 
 export const client = createClient({
   projectId: 'hoq99nai',
@@ -19,4 +20,8 @@ export async function getImagen(seccion: string) {
 
 export async function getHero() {
   return client.fetch(heroQuery)
+}
+
+export async function getRecursoBySlug(slug: string) {
+  return client.fetch(recursoBySlugQuery, { slug })
 }

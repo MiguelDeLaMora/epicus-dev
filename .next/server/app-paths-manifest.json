@@ -1,9 +1,8 @@
 {
-  "/nosotros/page": "app/nosotros/page.js",
   "/recursos/page": "app/recursos/page.js",
-  "/page": "app/page.js",
+  "/studio/[[...tool]]/page": "app/studio/[[...tool]]/page.js",
+  "/desarrolladores/page": "app/desarrolladores/page.js",
   "/contacto/page": "app/contacto/page.js",
-  "/portafolio/page": "app/portafolio/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/desarrolladores/page": "app/desarrolladores/page.js"
+  "/recursos/[slug]/page": "app/recursos/[slug]/page.js"
 }

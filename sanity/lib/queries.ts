@@ -3,9 +3,25 @@ import { groq } from 'next-sanity'
 export const recursosQuery = groq`
   *[_type == "recurso"] | order(orden asc) {
     _id,
-    categoria,
     titulo,
+    slug,
+    categoria,
+    fecha,
     resumen,
+    imagenDestacada,
+    orden
+  }
+`
+
+export const recursoBySlugQuery = groq`
+  *[_type == "recurso" && slug.current == $slug][0] {
+    _id,
+    titulo,
+    slug,
+    categoria,
+    fecha,
+    resumen,
+    imagenDestacada,
     cuerpo,
     orden
   }
