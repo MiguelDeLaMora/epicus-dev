@@ -2,7 +2,8 @@ import Section from "@/components/ui/Section";
 
 export default function NosotrosHero() {
   return (
-    <Section className="bg-cream" size="lg">
+    <Section className="bg-cream py-24 lg:py-28">
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         {/* Columna izquierda — headline */}

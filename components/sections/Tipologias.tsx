@@ -36,22 +36,24 @@ function TipologiaCard({ icon, name, desc, zones }: TipologiaProps) {
 
 // ─── Iconos ───────────────────────────────────────────────────────────────────
 
+const svgStyle = { width: 22, height: 22, stroke: "currentColor", fill: "none", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
 const IconTerreno = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <path d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
     <polyline points="9 22 9 12 15 12 15 22"/>
   </svg>
 );
 
 const IconDepto = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <rect x="3" y="3" width="18" height="18" rx="2"/>
-    <path d="M3 9h18M3 15h18M9 3v18M15 3v18" strokeWidth="1.2"/>
+    <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
   </svg>
 );
 
 const IconIndustrial = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <rect x="2" y="7" width="20" height="14" rx="2"/>
     <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
     <line x1="12" y1="12" x2="12" y2="16"/>
@@ -60,7 +62,7 @@ const IconIndustrial = () => (
 );
 
 const IconCasa = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <path d="M3 9l9-6 9 6v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
     <path d="M9 22V12h6v10"/>
     <path d="M5 9h2M17 9h2M5 13h2M17 13h2"/>

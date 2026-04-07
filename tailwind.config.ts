@@ -90,11 +90,12 @@ const config: Config = {
         "parent": "20px", // Contenedor padre
         "child":  "10px", // Elementos hijo
         "nested": "5px",  // Elementos anidados
+        "section": "4%", // Padding externo de sección full-width
       },
  
       // ─── Padding de secciones ─────────────────────────────────────────────────
       padding: {
-        "section": "4%", // Padding externo de sección full-width
+        
         "inner":   "2%", // Padding de bloque de texto interno
       },
     },

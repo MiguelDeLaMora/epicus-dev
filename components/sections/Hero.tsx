@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Container from "@/components/ui/Container";
+import FadeIn from "@/components/ui/FadeIn";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -37,49 +39,11 @@ export default function Hero({
   data?: HeroData;
 }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-68px)]">
+    <div className="relative min-h-[calc(100vh-68px)]">
 
-      {/* ── Lado izquierdo — contenido ── */}
-      <div className="flex flex-col justify-center px-[8%] py-24 lg:py-28">
+      {/* ── Imagen — mitad derecha en absolute ── */}
+      <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block overflow-hidden bg-ink">
 
-        <Eyebrow>
-          {data?.eyebrow ?? "Asesoría Inmobiliaria · Monterrey"}
-        </Eyebrow>
-
-        <h1 className="font-display text-h1 text-ink mb-7 tracking-[-0.02em]">
-          Las mejores decisiones<br />
-          inmobiliarias empiezan<br />
-          con la{" "}
-          <em className="italic text-blue">
-            conversación<br />correcta.
-          </em>
-        </h1>
-
-        <p className="text-b1 text-ink-mid max-w-[440px] mb-12">
-          {data?.descripcion ?? "Permítenos conversar. Estamos seguros de que juntos podemos fortalecer la información que necesitas para tomar la mejor decisión posible."}
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4">
-          <Link
-            href="/contacto"
-            className="inline-block bg-blue hover:bg-blue-light text-white text-btn px-8 py-[14px] rounded-[4px] transition-all duration-200 hover:-translate-y-px"
-          >
-            {data?.ctaPrimario ?? "Agenda tu asesoría"}
-          </Link>
-          <Link
-            href="/portafolio"
-            className="inline-flex items-center gap-2 hover:gap-4 text-btn font-normal text-ink py-[14px] transition-all duration-200"
-          >
-            {data?.ctaSecundario ?? "Ver portafolio →"}
-          </Link>
-        </div>
-      </div>
-
-      {/* ── Lado derecho — visual ── */}
-      <div className="relative hidden lg:block overflow-hidden bg-ink">
-
-        {/* Fondo — imagen de Sanity o gradiente por defecto */}
         {imagenUrl ? (
           <img
             src={imagenUrl}
@@ -105,7 +69,7 @@ export default function Hero({
           </>
         )}
 
-        {/* Overlay de gradiente azul */}
+        {/* Overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -114,7 +78,7 @@ export default function Hero({
           }}
         />
 
-        {/* Badge inferior con stats integradas */}
+        {/* Badge inferior */}
         <div className="absolute bottom-12 left-12 right-12 backdrop-blur-xl border border-white/15 bg-white/[0.08] px-7 py-6 text-white">
           <div className="font-display text-h5 font-light italic mb-1">
             EPICUS Intelligence
@@ -151,6 +115,53 @@ export default function Hero({
           </div>
         </div>
       </div>
+
+      {/* ── Contenido ── */}
+      <Container className="relative flex flex-col justify-center min-h-[calc(100vh-68px)] py-24 lg:py-28">
+        <div className="lg:w-1/2 lg:pr-16">
+
+          <FadeIn delay={0}>
+            <Eyebrow>
+              {data?.eyebrow ?? "Asesoría Inmobiliaria · Monterrey"}
+            </Eyebrow>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <h1 className="font-display text-h1 text-ink mb-7 tracking-[-0.02em]">
+              Las mejores decisiones<br />
+              inmobiliarias empiezan<br />
+              con la{" "}
+              <em className="italic text-blue">
+                conversación<br />correcta.
+              </em>
+            </h1>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <p className="text-b1 text-ink-mid max-w-[440px] mb-12">
+              {data?.descripcion ?? "Permítenos conversar. Estamos seguros de que juntos podemos fortalecer la información que necesitas para tomar la mejor decisión posible."}
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/contacto"
+                className="inline-block bg-blue hover:bg-blue-light text-white text-btn px-8 py-[14px] rounded-[4px] transition-all duration-200 hover:-translate-y-px"
+              >
+                {data?.ctaPrimario ?? "Agenda tu asesoría"}
+              </Link>
+              <Link
+                href="/portafolio"
+                className="inline-flex items-center gap-2 hover:gap-4 text-btn font-normal text-ink py-[14px] transition-all duration-200"
+              >
+                {data?.ctaSecundario ?? "Ver portafolio →"}
+              </Link>
+            </div>
+          </FadeIn>
+
+        </div>
+      </Container>
 
     </div>
   );

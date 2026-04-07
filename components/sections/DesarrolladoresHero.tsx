@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 
 export default function DesarrolladoresHero() {
   return (
@@ -14,7 +15,7 @@ export default function DesarrolladoresHero() {
         style={{ background: "radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 65%)" }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-section py-20">
+      <Container className="relative z-10 py-28">
         <p className="flex items-center gap-3 text-overline text-blue-light/70 mb-5">
           <span className="block w-6 h-px bg-blue-light/70" />
           Para desarrolladores
@@ -35,7 +36,7 @@ export default function DesarrolladoresHero() {
         >
           Platica con nosotros
         </Link>
-      </div>
+      </Container>
     </div>
   );
 }

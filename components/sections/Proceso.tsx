@@ -1,4 +1,5 @@
 import Section from "@/components/ui/Section";
+import FadeIn from "@/components/ui/FadeIn";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -7,6 +8,7 @@ interface StepProps {
   icon: React.ReactNode;
   title: string;
   body: string;
+  index: number;
 }
 
 // ─── Sub-componentes ──────────────────────────────────────────────────────────
@@ -20,50 +22,49 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function PasoCard({ num, icon, title, body }: StepProps) {
+function PasoCard({ num, icon, title, body, index }: StepProps) {
   return (
-    <div className="relative bg-white px-8 py-10 overflow-hidden group hover:bg-[#f4f3f0] transition-colors duration-200">
-      {/* Número decorativo */}
-      <span
-        className="absolute top-4 right-5 font-display font-light leading-none select-none pointer-events-none text-[80px]"
-        style={{ color: "rgba(37,99,235,0.08)" }}
-        aria-hidden
-      >
-        {num}
-      </span>
-
-      {/* Ícono */}
-      <div className="relative w-11 h-11 flex items-center justify-center bg-blue-dim rounded-[4px] mb-5 text-blue">
-        {icon}
+    <FadeIn delay={0.2 + index * 0.1} direction="up">
+      <div className="relative bg-white px-8 py-10 overflow-hidden group hover:bg-[#f4f3f0] transition-colors duration-200 h-full">
+        <span
+          className="absolute top-4 right-5 font-display font-light leading-none select-none pointer-events-none text-[80px]"
+          style={{ color: "rgba(37,99,235,0.08)" }}
+          aria-hidden
+        >
+          {num}
+        </span>
+        <div className="relative w-11 h-11 flex items-center justify-center bg-blue-dim rounded-[4px] mb-5 text-blue">
+          {icon}
+        </div>
+        <h3 className="relative font-display text-h4 font-normal text-ink mb-3">
+          {title}
+        </h3>
+        <p className="relative text-[13px] font-light text-ink-soft leading-[1.8]">
+          {body}
+        </p>
       </div>
-
-      {/* Texto */}
-      <h3 className="relative font-display text-h4 font-normal text-ink mb-3">
-        {title}
-      </h3>
-      <p className="relative text-[13px] font-light text-ink-soft leading-[1.8]">
-        {body}
-      </p>
-    </div>
+    </FadeIn>
   );
 }
 
 // ─── Iconos ───────────────────────────────────────────────────────────────────
 
+const svgStyle = { width: 22, height: 22, stroke: "currentColor", fill: "none", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
 const IconChat = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
   </svg>
 );
 
 const IconFilter = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
   </svg>
 );
 
 const IconChart = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <line x1="18" y1="20" x2="18" y2="10"/>
     <line x1="12" y1="20" x2="12" y2="4"/>
     <line x1="6" y1="20" x2="6" y2="14"/>
@@ -71,7 +72,7 @@ const IconChart = () => (
 );
 
 const IconDone = () => (
-  <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-current fill-none stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round]">
+  <svg viewBox="0 0 24 24" style={svgStyle}>
     <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
     <polyline points="22 4 12 14.01 9 11.01"/>
   </svg>
@@ -79,7 +80,7 @@ const IconDone = () => (
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const steps: StepProps[] = [
+const steps = [
   {
     num: "01",
     icon: <IconChat />,
@@ -111,15 +112,16 @@ const steps: StepProps[] = [
 export default function Proceso() {
   return (
     <Section className="bg-cream">
-      <SectionLabel>Cómo trabajamos</SectionLabel>
-      <h2 className="font-display text-h2 text-ink">
-        El proceso que nos <em className="italic text-blue">define</em>
-      </h2>
+      <FadeIn delay={0}>
+        <SectionLabel>Cómo trabajamos</SectionLabel>
+        <h2 className="font-display text-h2 text-ink">
+          El proceso que nos <em className="italic text-blue">define</em>
+        </h2>
+      </FadeIn>
 
-      {/* Grid 4 columnas — separadores de 1px con bg-black/[0.08] */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/[0.08] mt-16">
-        {steps.map((step) => (
-          <PasoCard key={step.num} {...step} />
+        {steps.map((step, i) => (
+          <PasoCard key={step.num} {...step} index={i} />
         ))}
       </div>
     </Section>

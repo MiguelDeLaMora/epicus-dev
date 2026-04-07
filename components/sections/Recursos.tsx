@@ -66,7 +66,7 @@ function RecursoCard({ recurso }: { recurso: Recurso }) {
 
 export default function Recursos({ recursos }: { recursos: Recurso[] }) {
   return (
-    <Section className="bg-white">
+    <Section className="bg-white py-24 lg:py-28">
       {/* Header */}
       <p className="flex items-center gap-3 text-overline text-blue mb-5">
         <span className="block w-6 h-px bg-blue" />
