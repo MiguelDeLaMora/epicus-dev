@@ -117,7 +117,7 @@ export default function Hero({
       </div>
 
       {/* ── Contenido ── */}
-      <Container className="relative flex flex-col justify-center min-h-[calc(100vh-68px)] py-24 lg:py-28">
+      <Container className="relative flex flex-col justify-center min-h-[calc(100vh-68px)] pt-24 pb-7 lg:pt-28 lg:pb-12">
         <div className="lg:w-1/2 lg:pr-16">
 
           <FadeIn delay={0}>
