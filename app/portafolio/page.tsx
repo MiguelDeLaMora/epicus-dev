@@ -4,6 +4,14 @@ import Tipologias from "@/components/sections/Tipologias";
 
 export const metadata = {
   title: "Portafolio",
+  description:
+    "Acceso a 95 proyectos inmobiliarios activos en Monterrey — terrenos residenciales, departamentos, casas e industrial. Información que no verás en ningún portal.",
+  openGraph: {
+    title: "Portafolio | EPICUS",
+    description:
+      "95 proyectos activos en Monterrey. Terrenos, departamentos, casas e industrial. Información exclusiva disponible en tu asesoría.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default function PortafolioPage() {

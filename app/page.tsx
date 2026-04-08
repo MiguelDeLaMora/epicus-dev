@@ -8,6 +8,18 @@ import { urlForImage } from "@/sanity/lib/image";
 
 export const revalidate = 60;
 
+export const metadata = {
+  title: "EPICUS — Asesoría Inmobiliaria en Monterrey",
+  description:
+    "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana. Acceso a 95 proyectos activos y 4,480 unidades disponibles.",
+  openGraph: {
+    title: "EPICUS — Asesoría Inmobiliaria en Monterrey",
+    description:
+      "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+};
+
 export default async function Home() {
   const [heroImagen, heroData] = await Promise.all([
     getImagen("hero"),
