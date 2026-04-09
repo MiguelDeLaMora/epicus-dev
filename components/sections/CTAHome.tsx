@@ -1,11 +1,13 @@
 import Link from "next/link";
-import Section from "@/components/ui/Section";
 import FadeIn from "@/components/ui/FadeIn";
 
 export default function CTAHome() {
   return (
-    <Section className="bg-blue" container={false}>
-      <div className="mx-auto max-w-6xl px-section text-center">
+    <section
+      className="py-24"
+      style={{ background: "linear-gradient(135deg, #0a0f1a 0%, #0f1f3d 60%, #0a0a0f 100%)" }}
+    >
+      <div className="mx-auto w-full px-[4%] text-center">
         <FadeIn delay={0}>
           <p className="text-overline text-white/55 mb-5">Un paso a la vez</p>
           <h2 className="font-display text-h2 font-light text-white mb-5">
@@ -20,12 +22,12 @@ export default function CTAHome() {
         <FadeIn delay={0.2}>
           <Link
             href="/contacto"
-            className="inline-block bg-white text-blue text-btn font-medium px-8 py-[14px] rounded-[4px] transition-all duration-200 hover:bg-neutral-100 hover:-translate-y-px"
+            className="inline-block bg-blue hover:bg-blue-light text-white text-btn font-medium px-8 py-[14px] rounded-[4px] transition-all duration-200 hover:-translate-y-px"
           >
             Agendar asesoría gratuita
           </Link>
         </FadeIn>
       </div>
-    </Section>
+    </section>
   );
 }

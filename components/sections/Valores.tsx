@@ -16,7 +16,7 @@ function ValorItem({ num, title, body, index }: ValorProps) {
   return (
     <FadeIn delay={0.1 + index * 0.08}>
       <div className="border-t border-black/[0.08] pt-8">
-        <div className="font-display text-[13px] tracking-[0.08em] text-blue mb-3">
+        <div className="font-display text-[19px] tracking-[0.08em] text-blue mb-3">
           {num}
         </div>
         <h3 className="text-h6 text-ink mb-3">{title}</h3>
