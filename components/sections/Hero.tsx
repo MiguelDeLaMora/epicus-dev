@@ -39,10 +39,10 @@ export default function Hero({
   data?: HeroData;
 }) {
   return (
-    <div className="relative min-h-[calc(100vh-68px)]">
+    <div className="relative min-h-[calc(100vh-68px)] flex flex-col lg:block">
 
-      {/* ── Imagen — mitad derecha en absolute ── */}
-      <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block overflow-hidden bg-ink">
+      {/* ── Imagen — mitad derecha en desktop, bloque completo en mobile ── */}
+      <div className="relative lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full overflow-hidden bg-ink h-[280px] lg:h-auto order-last lg:order-none">
 
         {imagenUrl ? (
           <img
@@ -55,8 +55,7 @@ export default function Hero({
             <div
               className="absolute inset-0"
               style={{
-                background:
-                  "linear-gradient(135deg, #0a1628 0%, #1e3a8a 40%, #0a0a0f 100%)",
+                background: "linear-gradient(135deg, #0a1628 0%, #1e3a8a 40%, #0a0a0f 100%)",
               }}
             />
             <div
@@ -73,13 +72,12 @@ export default function Hero({
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(0,0,0,0.4) 100%)",
+            background: "linear-gradient(135deg, rgba(37,99,235,0.3) 0%, rgba(0,0,0,0.4) 100%)",
           }}
         />
 
-        {/* Badge inferior */}
-        <div className="absolute bottom-12 left-12 right-12 backdrop-blur-xl border border-white/15 bg-white/[0.08] px-7 py-6 text-white">
+        {/* Badge inferior — solo desktop */}
+        <div className="absolute bottom-12 left-12 right-12 backdrop-blur-xl border border-white/15 bg-white/[0.08] px-7 py-6 text-white hidden lg:block">
           <div className="font-display text-h5 font-light italic mb-1">
             EPICUS Intelligence
           </div>
@@ -117,7 +115,7 @@ export default function Hero({
       </div>
 
       {/* ── Contenido ── */}
-      <Container className="relative flex flex-col justify-center min-h-[calc(100vh-68px)] pt-24 pb-7 lg:pt-28 lg:pb-12">
+      <Container className="relative flex flex-col justify-center lg:min-h-[calc(100vh-68px)] pt-[100px] pb-10 lg:pt-28 lg:pb-12">
         <div className="lg:w-1/2 lg:pr-16">
 
           <FadeIn delay={0}>

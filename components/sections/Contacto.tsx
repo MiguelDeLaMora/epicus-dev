@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -44,6 +45,7 @@ export default function Contacto() {
   const [enviado, setEnviado] = useState(false);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   function toggleInteres(opt: Interes) {
     setForm((prev) => ({
@@ -63,7 +65,7 @@ export default function Contacto() {
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken }),
       });
 
       if (!res.ok) throw new Error("Error al enviar");
@@ -180,6 +182,13 @@ export default function Contacto() {
                       <label className="text-[12px] font-medium text-ink tracking-[0.04em]">¿Algo que quieras contarnos?</label>
                       <textarea rows={4} placeholder="Contexto sobre lo que buscas, zona de interés, o cualquier pregunta..." value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={`${inputBase} resize-none`} />
                     </div>
+
+                    {/* Turnstile invisible */}
+                    <Turnstile
+                      siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                      onSuccess={(token) => setTurnstileToken(token)}
+                      options={{ execution: "render", size: "invisible" }}
+/>
 
                     {/* Error */}
                     {error && (

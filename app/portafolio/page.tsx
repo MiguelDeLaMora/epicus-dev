@@ -10,7 +10,7 @@ export const metadata = {
     title: "Portafolio | EPICUS",
     description:
       "95 proyectos activos en Monterrey. Terrenos, departamentos, casas e industrial. Información exclusiva disponible en tu asesoría.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "og-image-epicus.webp", width: 1200, height: 630 }],
   },
 };
 

@@ -10,7 +10,7 @@ export const metadata = {
     title: "Nosotros | EPICUS",
     description:
       "Conoce al equipo detrás de EPICUS. Asesores inmobiliarios en Monterrey comprometidos con tu mejor decisión.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "og-image-epicus.webp", width: 1200, height: 630 }],
   },
 };
 

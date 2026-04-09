@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image-epicus.webp",
         width: 1200,
         height: 630,
         alt: "EPICUS — Asesoría Inmobiliaria",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "EPICUS — Asesoría Inmobiliaria en Monterrey",
     description:
       "Asesoría e inteligencia inmobiliaria en Monterrey y área metropolitana.",
-    images: ["/og-image.png"],
+    images: ["/og-image-epicus.webp"],
   },
  
   robots: {

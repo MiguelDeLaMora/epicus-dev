@@ -11,7 +11,7 @@ export const metadata = {
     title: "Recursos | EPICUS",
     description:
       "Inteligencia inmobiliaria del mercado de Monterrey. Guías, análisis y tendencias para tomar mejores decisiones.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "og-image-epicus.webp", width: 1200, height: 630 }],
   },
 };
 

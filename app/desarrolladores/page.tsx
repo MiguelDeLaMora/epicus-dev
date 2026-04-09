@@ -11,7 +11,7 @@ export const metadata = {
     title: "Para Desarrolladores | EPICUS",
     description:
       "Comercializa tu proyecto con estructura y resultados. Master broker y gerencia comercial para desarrolladores en Monterrey.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "og-image-epicus.webp", width: 1200, height: 630 }],
   },
 };
 
