@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://epicus.com.mx";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://epicus.com.mx").replace(/\/$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
