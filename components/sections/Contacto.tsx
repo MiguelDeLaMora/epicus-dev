@@ -42,6 +42,8 @@ export default function Contacto() {
     mensaje: "",
   });
   const [enviado, setEnviado] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function toggleInteres(opt: Interes) {
     setForm((prev) => ({
@@ -52,9 +54,26 @@ export default function Contacto() {
     }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setEnviado(true);
+    setCargando(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar");
+
+      setEnviado(true);
+    } catch {
+      setError("Hubo un problema al enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp.");
+    } finally {
+      setCargando(false);
+    }
   }
 
   return (
@@ -90,8 +109,8 @@ export default function Contacto() {
           </FadeIn>
           <div className="flex flex-col gap-6">
             {[
-              { icon: <IconPhone />, label: "WhatsApp",  value: "+52 81 2600 5642",   href: "https://wa.me/528126005642" },
-              { icon: <IconMail />,  label: "Correo",    value: "info@epicus.com.mx", href: "mailto:info@epicus.com.mx" },
+              { icon: <IconPhone />, label: "WhatsApp",  value: "+52 81 2600 5642",    href: "https://wa.me/528126005642" },
+              { icon: <IconMail />,  label: "Correo",    value: "info@epicus.com.mx",  href: "mailto:info@epicus.com.mx" },
               { icon: <IconPin />,   label: "Ubicación", value: "Monterrey, Nuevo León", href: undefined },
             ].map((d, i) => (
               <FadeIn key={d.label} delay={0.25 + i * 0.1}>
@@ -161,8 +180,20 @@ export default function Contacto() {
                       <label className="text-[12px] font-medium text-ink tracking-[0.04em]">¿Algo que quieras contarnos?</label>
                       <textarea rows={4} placeholder="Contexto sobre lo que buscas, zona de interés, o cualquier pregunta..." value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} className={`${inputBase} resize-none`} />
                     </div>
-                    <button type="submit" className="w-full bg-blue hover:bg-blue-light text-white text-btn py-4 rounded-[4px] transition-all duration-200 hover:-translate-y-px mt-2">
-                      Solicitar asesoría gratuita
+
+                    {/* Error */}
+                    {error && (
+                      <p className="text-[13px] text-red-500 bg-red-50 px-4 py-3 rounded-[4px]">
+                        {error}
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={cargando}
+                      className="w-full bg-blue hover:bg-blue-light disabled:opacity-60 disabled:cursor-not-allowed text-white text-btn py-4 rounded-[4px] transition-all duration-200 hover:-translate-y-px mt-2"
+                    >
+                      {cargando ? "Enviando..." : "Solicitar asesoría gratuita"}
                     </button>
                   </form>
                 </>
